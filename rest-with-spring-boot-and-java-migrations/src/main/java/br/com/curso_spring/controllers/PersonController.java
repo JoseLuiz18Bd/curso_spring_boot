@@ -18,7 +18,7 @@ import br.com.curso_spring.model.Person;
 import br.com.curso_spring.services.PersonServices;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 	@Autowired
 	private PersonServices service;
