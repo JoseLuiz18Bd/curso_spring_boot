@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +18,13 @@ import br.com.curso_spring.data.vo.v1.PersonVO;
 import br.com.curso_spring.services.PersonServices;
 import br.com.curso_spring.util.MediaType;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+//@CrossOrigin // permitir cors em toda a aplicação
 @RestController
 @RequestMapping("/api/person/v1")
 @Tag(name = "People", description = "Endpoints for Managing Peoples") // Customização de documentação SWAGGER
@@ -30,6 +32,7 @@ public class PersonController {
 	@Autowired
 	private PersonServices service;
 	
+	@CrossOrigin( origins = {"http://localhost:8080", "http://localhost:3000"})  // permitir cors em determinado endpoint
 	@GetMapping(value="/{id}", produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
 	// Customização de documentação SWAGGER
 	@Operation(summary = "Finds a People", description = "Finds a People",
@@ -73,6 +76,7 @@ public class PersonController {
 		return service.findAll();
 	}
 	
+	@CrossOrigin( origins = {"http://localhost:8080", "http://localhost:3000"})  // permitir cors em determinado endpoint
 	@PostMapping(produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
 				 consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
 	// Customização de documentação SWAGGER
