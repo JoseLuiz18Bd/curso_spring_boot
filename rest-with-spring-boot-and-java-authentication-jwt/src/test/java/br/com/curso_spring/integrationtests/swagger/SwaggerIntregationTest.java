@@ -1,4 +1,4 @@
-package br.com.curso_spring.intregationtests.swagger;
+package br.com.curso_spring.integrationtests.swagger;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 
